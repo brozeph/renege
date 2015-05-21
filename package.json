@@ -1,0 +1,30 @@
+{
+  "name": "renege",
+  "version": "0.1.0",
+  "description": "Convenience methods for turning a function with a callback argument into a native promise",
+  "main": "promise.js",
+  "scripts": {
+    "test": "gulp jshint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/brozeph/promisify.git"
+  },
+  "keywords": [
+    "promise",
+    "promises",
+    "ES6"
+  ],
+  "author": "brozeph",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brozeph/promisify/issues"
+  },
+  "homepage": "https://github.com/brozeph/promisify#readme",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.10.0",
+    "jshint-stylish": "^1.0.2"
+  },
+  "engine": "node >= 0.12.x"
+}
