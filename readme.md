@@ -1,5 +1,7 @@
 # Renege
 
+[![Build Status](https://travis-ci.org/brozeph/renege.svg)](https://travis-ci.org/brozeph/renege)
+
 Simple Node.js library to turn a typical callback function into a native ES6 Promise.
 
 ## Installation
