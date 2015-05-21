@@ -1,4 +1,4 @@
-# Promisify
+# Renege
 
 Simple Node.js library to turn a typical callback function into a native ES6 Promise.
 
