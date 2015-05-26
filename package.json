@@ -18,9 +18,9 @@
   "author": "brozeph",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/brozeph/promisify/issues"
+    "url": "https://github.com/brozeph/renege/issues"
   },
-  "homepage": "https://github.com/brozeph/promisify#readme",
+  "homepage": "https://github.com/brozeph/renege#readme",
   "devDependencies": {
     "gulp": "^3.8.11",
     "gulp-jshint": "^1.10.0",
