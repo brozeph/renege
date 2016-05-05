@@ -1,6 +1,7 @@
 # Renege
 
 [![Build Status](https://travis-ci.org/brozeph/renege.svg)](https://travis-ci.org/brozeph/renege)
+[![Coverage Status](https://coveralls.io/repos/github/brozeph/renege/badge.svg?branch=master)](https://coveralls.io/github/brozeph/renege?branch=master)
 
 Simple Node.js library to turn a typical callback function into a native ES6 Promise.
 
@@ -12,7 +13,7 @@ npm install renege
 
 ## Prerequisites
 
-Be sure to run node with the `--harmony` flag specified
+Node.js `v0.12` or greater is required. If using version `v0.12` of Node, be sure to run node with the `--harmony` flag specified.
 
 ```
 node --harmony /path/to/your/app
@@ -77,4 +78,19 @@ module.exports = (function () {
 
   return app;
 }());
+```
+
+### renege.series
+
+This method accepts a list of functions, each returning a Promise, and executes each one in the order that they appear within the list.
+
+```javascript
+renege
+  .series(listOfPromises)
+  .then(() => {
+    // complete!
+  })
+  .catch((err) => {
+    // handle any errors...
+  });
 ```

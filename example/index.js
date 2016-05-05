@@ -5,6 +5,8 @@ var
   koa = require('koa'),
   renege = require('../promise.js');
 
+const PORT = 8080;
+
 
 module.exports = (function () {
   'use strict';
@@ -24,7 +26,7 @@ module.exports = (function () {
   }).catch(function (err) {
     console.error(err);
   }).then(function () {
-    server.listen(process.env.NODE_PORT || 8080);
+    server.listen(process.env.NODE_PORT || PORT);
     console.log('secure server started...');
   });
 
