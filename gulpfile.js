@@ -12,7 +12,9 @@ var
 module.exports = (() => {
 	'use strict';
 
-	gulp.task('clean', () => del('coverage', 'reports'));
+	gulp.task('clean', function () {
+		return del('coverage', 'reports');
+	});
 
 	gulp.task('coveralls', function () {
 		return gulp
@@ -20,7 +22,7 @@ module.exports = (() => {
 			.pipe(coveralls());
 	});
 
-	gulp.task('lint', () => {
+	gulp.task('lint', function () {
 		return gulp
 			.src(['**/*.js', '!node_modules/**', '!reports/**'])
 			.pipe(eslint())
@@ -30,7 +32,7 @@ module.exports = (() => {
 
 	gulp.task('test', ['clean', 'lint', 'test-unit']);
 
-	gulp.task('test-unit', ['clean'], () => {
+	gulp.task('test-unit', ['clean'], function () {
 		return gulp
 			.src(['./promise.js'])
 			.pipe(istanbul())
@@ -49,4 +51,4 @@ module.exports = (() => {
 					.pipe(istanbul.writeReports('./reports'));
 			});
 	});
-})();
+}());
