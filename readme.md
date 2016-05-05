@@ -85,10 +85,26 @@ module.exports = (function () {
 This method accepts a list of functions, each returning a Promise, and executes each one in the order that they appear within the list.
 
 ```javascript
+var list = [
+  function () {
+    console.log(1);
+    return setTimeout(Promise.resolve, 1000);
+  },
+  function () {
+    console.log(2);
+    return Promise.resolve();
+  },
+  function () {
+    console.log(3);
+    return setTimeout(Promise.resolve, 500);
+  }
+];
+
 renege
-  .series(listOfPromises)
+  .series(list)
   .then(() => {
     // complete!
+    // will output the console.log commands above in order!
   })
   .catch((err) => {
     // handle any errors...
