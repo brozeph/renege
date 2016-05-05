@@ -1,3 +1,9 @@
+# v0.1.3 / 2016.05.05
+
+* Introduced new method `series` to assist with running a series of Promise closures in order
+* Removed `jshint` and replaced with `eslint`
+* Added unit tests with code coverage reporting
+
 # v0.1.2 / 2015.05.21
 
 * Fixed typo in package.json repository URL
