@@ -9,7 +9,7 @@ var
 	mocha = require('gulp-mocha');
 
 
-module.exports = (() => {
+module.exports = (function () {
 	'use strict';
 
 	gulp.task('clean', function () {
