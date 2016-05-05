@@ -18,9 +18,9 @@
   "author": "brozeph",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/brozeph/promisify/issues"
+    "url": "https://github.com/brozeph/renege/issues"
   },
-  "homepage": "https://github.com/brozeph/promisify#readme",
+  "homepage": "https://github.com/brozeph/renege#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
