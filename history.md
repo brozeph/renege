@@ -1,3 +1,7 @@
+# v0.1.4 / 2016.05.11
+
+* Adjusted interface to `#series` to `Promise.reject` rather than throw
+
 # v0.1.3 / 2016.05.05
 
 * Introduced new method `series` to assist with running a series of Promise closures in order

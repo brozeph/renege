@@ -72,7 +72,7 @@ describe('renege', function () {
 			should.exist(renege);
 			should.exist(renege.series);
 
-			renege.series.should.throw(/required/);
+			renege.series().should.be.rejectedWith(/required/);
 		});
 
 		it('should require that each item in the list is a function', function () {
@@ -82,9 +82,7 @@ describe('renege', function () {
 				},
 				Promise.resolve(2)];
 
-			(function () {
-				return renege.series(badList);
-			}).should.throw(/index 1/);
+			return renege.series(badList).should.be.rejectedWith(/index 1/);
 		});
 
 		it('should resolve immediately if list is empty', function () {
@@ -92,19 +90,33 @@ describe('renege', function () {
 		});
 
 		it('should reject immediately when a promise within the array rejects', function () {
-			var list = [
-				function () {
-					return renege.create(mockSuccessMethod, 'test 1');
-				},
-				function () {
-					return renege.create(mockErrorMethod, 'test error');
-				},
-				function () {
-					return renege.create(mockSuccessMethod, 'test 2');
-				}
-			];
+			var
+				counter = 0,
+				list = [
+					function () {
+						return renege.create(function (callback) {
+							counter++;
 
-			renege.series(list).should.be.rejectedWith(/test error/);
+							return setImmediate(callback);
+						});
+					},
+					function () {
+						return renege.create(mockErrorMethod, 'test error');
+					},
+					function () {
+						return renege.create(function (callback) {
+							counter++;
+
+							return setImmediate(callback);
+						});
+					}
+				];
+
+			renege.series(list)
+				.should.be.rejectedWith(/test error/)
+				.notify(function () {
+					counter.should.equal(1);
+				});
 		});
 
 		it('should resolve in order after all Promises resolve', function () {
