@@ -60,16 +60,30 @@ module.exports = (function (self) {
 	 * @returns {Promise} A Promise that resolves once each item within the input list is resolved
 	 **/
 	self.series = function (list) {
-		if (!list) {
-			throw new Error('list of functions that return a Promise is required');
+		var err;
+
+		if (!list || !Array.isArray(list)) {
+			return Promise.reject(
+				new Error('list of functions that return a Promise is required'));
 		}
 
 		// validate that each item in the input list is a function
-		list.forEach(function (closure, index) {
+		list.some(function (closure, index) {
 			if (typeof closure !== 'function') {
-				throw new Error(['item at index', index, 'is not a function'].join(' '));
+				err = new Error([
+					'item at index',
+					index,
+					'is not a function'].join(' '));
+
+				return true;
 			}
+
+			return false;
 		});
+
+		if (err) {
+			return Promise.reject(err);
+		}
 
 		// if there are no items in the list, simply return a Promise
 		if (!list.length) {

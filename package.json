@@ -1,6 +1,6 @@
 {
   "name": "renege",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Convenience methods for turning a function with a callback argument into a native promise",
   "main": "promise.js",
   "scripts": {
